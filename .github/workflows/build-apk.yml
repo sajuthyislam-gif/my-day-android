@@ -23,6 +23,10 @@ jobs:
           test -f project/settings.gradle
           test -d project/app
 
+      - name: Fix Java Kotlin version mismatch
+        run: |
+          sed -i 's/JavaVersion.VERSION_1_8/JavaVersion.VERSION_17/g' project/app/build.gradle
+          
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
